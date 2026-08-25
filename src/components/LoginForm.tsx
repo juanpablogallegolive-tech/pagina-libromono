@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 export default function LoginForm() {
   const router = useRouter();
@@ -47,14 +48,14 @@ export default function LoginForm() {
           <p className="rounded-lg bg-rose-50 px-3 py-2 text-sm text-rose-700 border border-rose-200">{error}</p>
         )}
         <div className="flex items-center justify-between text-sm">
-          <a href="#" className="text-emerald-700 hover:underline">¿Olvidaste tu contraseña?</a>
+          <Link href="/auth/forgot-password" className="text-emerald-700 hover:underline">¿Olvidaste tu contraseña?</Link>
         </div>
         <button type="submit" disabled={cargando} className="btn-primary w-full py-2.5">
           {cargando ? 'Ingresando…' : 'Iniciar Sesión'}
         </button>
       </form>
       <p className="mt-6 text-center text-sm text-slate-500">
-        ¿No tienes cuenta? <a href="#" className="font-semibold text-emerald-700 hover:underline">Regístrate aquí</a>
+        ¿No tienes cuenta? <Link href="/auth/register" className="font-semibold text-emerald-700 hover:underline">Regístrate aquí</Link>
       </p>
       <div className="mt-6 rounded-lg border border-dashed border-emerald-300 bg-emerald-50 p-3 text-xs leading-relaxed text-emerald-900">
         <p className="font-bold">Acceso de demostración</p>

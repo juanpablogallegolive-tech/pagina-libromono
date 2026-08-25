@@ -15,6 +15,9 @@ Sistema contable y de gestión humana **multi-empresa** construido con **Next.js
 | `/contador-ia` | Asistente contable (streaming, azul/morado) |
 | `/ia-exogena` | Medios Magnéticos DIAN + generación Excel (verde) |
 | `/admin/usuarios` | Administración de usuarios (solo ADMIN) |
+| `/auth/forgot-password` | Recuperar contraseña (token 1 hora) |
+| `/auth/reset-password` | Nueva contraseña con token |
+| `/auth/register` | Crear cuenta (rol VISTA inicial) |
 
 ## Accesos de demostración
 | Email | Contraseña | Rol |

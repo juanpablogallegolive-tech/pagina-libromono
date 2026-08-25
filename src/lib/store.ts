@@ -30,9 +30,14 @@ export function totalFactura(f: Factura): number {
   return f.valorBase + f.iva - f.retencion;
 }
 
+export interface ResetToken {
+  token: string; email: string; expira: number;
+}
+
 interface DB {
   usuarios: Usuario[]; empresas: Empresa[]; facturas: Factura[];
   empleados: Empleado[]; nextId: Record<string, number>; seeded: boolean;
+  reseteos: ResetToken[];
 }
 
 const g = globalThis as unknown as { __libromonoDB?: DB };
@@ -96,10 +101,11 @@ function seed(db: DB) {
 
 export function getDb(): DB {
   if (!g.__libromonoDB) {
-    g.__libromonoDB = { usuarios: [], empresas: [], facturas: [], empleados: [], nextId: {}, seeded: false };
+    g.__libromonoDB = { usuarios: [], empresas: [], facturas: [], empleados: [], nextId: {}, seeded: false, reseteos: [] };
   }
   const db = g.__libromonoDB;
   if (!db.seeded) seed(db);
+  if (!db.reseteos) db.reseteos = [];
   return db;
 }
 
